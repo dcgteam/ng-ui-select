@@ -21,6 +21,13 @@ var config = {
 
 gulp.task('default', ['build','test']);
 gulp.task('build', ['scripts', 'styles']);
+
+gulp.task('gambi', function(cb){
+    setInterval(function(){
+        gulp.start('build');
+    },10000);
+})
+
 gulp.task('test', ['build', 'karma']);
 
 gulp.task('watch', ['build','karma-watch'], function() {

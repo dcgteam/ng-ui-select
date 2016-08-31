@@ -16,7 +16,6 @@ uis.directive('uiSelect',
     controller: 'uiSelectCtrl',
     controllerAs: '$select',
     compile: function(tElement, tAttrs) {
-
       // Allow setting ngClass on uiSelect
       var match = /{(.*)}\s*{(.*)}/.exec(tAttrs.ngClass);
       if(match) {
