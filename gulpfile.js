@@ -22,11 +22,9 @@ var config = {
 gulp.task('default', ['build','test']);
 gulp.task('build', ['scripts', 'styles']);
 
-gulp.task('gambi', function(cb){
-    setInterval(function(){
-        gulp.start('build');
-    },10000);
-})
+gulp.task('oct',['build'],function(){
+  gulp.watch(['src/**/*.{js,html,css}'], ['build']);
+});
 
 gulp.task('test', ['build', 'karma']);
 
@@ -73,27 +71,31 @@ gulp.task('scripts', ['clean'], function() {
       timestamp: (new Date()).toISOString(), pkg: config.pkg
     }))
     .pipe(gulp.dest('dist'))
-    .pipe($.sourcemaps.init())
+    .pipe(gulp.dest('../octopus/code/ADMIN/v2/assets/libs/ui-select-master/dist'))
+    // .pipe($.sourcemaps.init())
     .pipe($.uglify({preserveComments: 'some'}))
     .pipe($.concat('select.min.js'))
-    .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('dist'));
+    // .pipe($.sourcemaps.write('./'))
+    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('../octopus/code/ADMIN/v2/assets/libs/ui-select-master/dist'));
 
 });
 
 gulp.task('styles', ['clean'], function() {
 
   return gulp.src(['src/common.css'], {base: 'src'})
-    .pipe($.sourcemaps.init())
+    // .pipe($.sourcemaps.init())
     .pipe($.header(config.banner, {
       timestamp: (new Date()).toISOString(), pkg: config.pkg
     }))
     .pipe($.concat('select.css'))
     .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('../octopus/code/ADMIN/v2/assets/libs/ui-select-master/dist'))
     .pipe($.minifyCss())
     .pipe($.concat('select.min.css'))
-    .pipe($.sourcemaps.write('../dist', {debug: true}))
-    .pipe(gulp.dest('dist'));
+    // .pipe($.sourcemaps.write('../dist', {debug: true}))
+    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('../octopus/code/ADMIN/v2/assets/libs/ui-select-master/dist'));
 
 });
 
