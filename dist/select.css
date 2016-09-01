@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.19.3 - 2016-08-17T06:16:42.140Z
+ * Version: 0.19.4 - 2016-08-31T19:38:59.311Z
  * License: MIT
  */
 
@@ -138,9 +138,9 @@ body > .select2-container.open {
   background-color: #EBEBEB;
   border-color: #ADADAD;
   text-decoration: none;
-  outline: 5px auto -webkit-focus-ring-color;
+  /*outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);*/
 }
 
 .ui-select-bootstrap .ui-select-toggle {
@@ -215,18 +215,80 @@ body > .ui-select-bootstrap.open {
   border: none;
   outline: none;
   height: 1.666666em;
-  margin-bottom: 3px;
+  margin: 3px 0;
+  color:#666;
+  font-family: Segoe UI,Arial,sans-serif!important;
+  padding: 2.5px 5px;
 }
 
 .ui-select-multiple.ui-select-bootstrap .ui-select-match .close {
-  font-size: 1.6em;
-  line-height: 0.75;
+  // line-height: 1000px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 6px;
+  display: block;
+  overflow: hidden;
+  opacity: 1;
+  text-shadow: none;
+  width:11px;
+  cursor:pointer;
+}
+.allow-clear-times-icon{
+  margin-right: 10px;
+  position: absolute;
+  right: 20px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  height: 13px;
+}
+.allow-clear-times-icon .ui-select-match-close{
+  opacity:1;
 }
 
-.ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+span.close.ui-select-match-close:before {
+  font-family: pages-icon;
+  content: "\e60a";
+  padding: 0;
+  font-size: 13px!important;
+  font-weight: 700;
+  display: block;
+  // line-height: normal;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  bottom: 0;
+  margin: auto;
+  height: 14px;
+}
+.ui-select-choices-group-label.dropdown-header{
+  cursor:default;
+}
+
+.ui-select-choices-group .select-all{
+  font-weight: normal;
+  margin-left: 10px;
+  color: #640aa6;
+  cursor: pointer;
+}
+
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item{
   outline: 0;
   margin: 0 3px 3px 0;
+  background:#ccc;
+  cursor:default;
 }
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item:hover{
+  outline: 0;
+  color:#5e5e5e;
+  background:#ccc;
+  border-color: #ededed;
+}
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item span[uis-transclude-append]{
+  padding-right:10px;
+}
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item span[uis-transclude-append] span{font-size:13px;}
 
 .ui-select-multiple .ui-select-match-item {
   position: relative;
@@ -317,4 +379,9 @@ body > .ui-select-bootstrap.open {
   height: 10px;
   right: 10px;
   margin-top: -2px;
+}
+
+.ui-select-container input {
+  font-family: Arial,sans-serif!important;
+  padding: 7px 12px 9px 12px;
 }

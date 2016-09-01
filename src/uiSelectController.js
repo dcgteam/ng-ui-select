@@ -59,6 +59,24 @@ uis.controller('uiSelectCtrl',
     throw uiSelectMinErr('searchInput', "Expected 1 input.ui-select-search but got '{0}'.", ctrl.searchInput.length);
   }
 
+  /*
+   * regra que complementa essa ação está no arquivo overwrite.bootstrap.less na linha 402
+   * Código base pego aqui: https://github.com/prakashn27/ui-select/commit/da1cd6c09ad8bf4b8d8ed5aab16db8a2ac5b310c#commitcomment-18851675
+   */
+  ctrl.headerClick = function(groupname,$event) {
+    ctrl.items.map(verifyGroup);
+
+    function verifyGroup(element){
+      if(element.group==groupname){
+        //timeout está aqui pois a função ctrl.select recebe muitos parâmetros ao mesmo tempo e se perde no meio do caminho
+        $timeout(function(){
+          ctrl.select(element, false, ' ');
+        },10);
+      }
+    }
+  };
+
+
   ctrl.isEmpty = function() {
     return angular.isUndefined(ctrl.selected) || ctrl.selected === null || ctrl.selected === '' || (ctrl.multiple && ctrl.selected.length === 0);
   };
